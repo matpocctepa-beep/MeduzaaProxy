@@ -44,30 +44,36 @@
             text-align: center;
         }
 
-        header p { color: #a78bfa; font-size: 15px; line-height: 1.5; text-align: center; margin-bottom: 20px; }
-
-        .section-title {
-            font-size: 14px;
+        h2 {
+            font-size: 18px;
+            color: #f472b6; 
+            margin-top: 0;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #f472b6; 
             font-weight: bold;
-            margin-bottom: 15px;
             text-align: center;
         }
 
-        /* Инструкция */
+        header p { color: #a78bfa; font-size: 15px; line-height: 1.5; text-align: center; margin-bottom: 20px; }
+
+        /* Стиль для плашки "Первая неделя бесплатно" */
+        .promo-badge {
+            background: linear-gradient(90deg, #00f2fe, #4facfe);
+            color: #07040d;
+            text-align: center;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
         .step-item { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
         .step-number { background-color: #ec4899; color: white; font-weight: bold; font-size: 14px; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .step-text h3 { margin: 0 0 5px 0; font-size: 15px; }
-        .step-text p { margin: 0; font-size: 13px; color: #94a3b8; }
+        .step-text p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.4; }
 
-        /* FAQ */
-        .faq-item { margin-bottom: 15px; border-bottom: 1px solid #23153c; padding-bottom: 15px; }
-        .faq-item h3 { margin: 0 0 8px 0; font-size: 15px; }
-        .faq-item p { margin: 0; font-size: 13px; color: #94a3b8; }
-
-        /* Тарифы */
         .tariffs { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
         .tariff-item { background-color: #1a102b; border: 1px solid #2e1b4e; border-radius: 16px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .tariff-price { font-size: 18px; font-weight: bold; color: #00f2fe; text-align: right; }
@@ -105,11 +111,14 @@
         </div>
 
         <div class="card" id="tariffs">
+            <!-- Плашка про бесплатную неделю -->
+            <div class="promo-badge">🎁 Первую неделю дарим бесплатно!</div>
+            
             <h2>Выберите тариф:</h2>
             <div class="tariffs">
-                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>7 дней</p></div><div class="tariff-price">150 ₽</div></div>
-                <div class="tariff-item"><div><h3>Стандарт</h3><p>1 месяц</p></div><div class="tariff-price">390 ₽</div></div>
-                <div class="tariff-item"><div><h3>Максимум</h3><p>3 месяца</p></div><div class="tariff-price">990 ₽</div></div>
+                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>После пробной недели</p></div><div class="tariff-price">150 ₽<br><span>за неделю</span></div></div>
+                <div class="tariff-item"><div><h3>Стандарт</h3><p>Оптимальный доступ</p></div><div class="tariff-price">390 ₽<br><span>за месяц</span></div></div>
+                <div class="tariff-item"><div><h3>Максимум</h3><p>Выгодный безлимит</p></div><div class="tariff-price">990 ₽<br><span>за 3 месяца</span></div></div>
             </div>
             <a href="https://t.me/percovna" class="btn" target="_blank">Скачать MeduzaProxy</a>
         </div>
