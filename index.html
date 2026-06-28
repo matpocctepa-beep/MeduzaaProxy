@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeduzaProxy — Стабильный доступ и безопасность в сети</title>
+    <title>MeduzaProxy — Быстрый доступ и безопасность</title>
     
     <style>
         html { scroll-behavior: smooth; }
@@ -40,35 +40,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             text-align: center;
         }
 
-        h2 {
-            font-size: 18px;
-            color: #f472b6; 
-            margin-top: 0;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: bold;
-            text-align: center;
-        }
-
+        h2 { font-size: 18px; color: #f472b6; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; text-align: center; }
         header p { color: #a78bfa; font-size: 15px; line-height: 1.5; text-align: center; margin-bottom: 20px; }
 
-        /* Стиль для плашки "Первая неделя бесплатно" */
-        .promo-badge {
-            background: linear-gradient(90deg, #00f2fe, #4facfe);
-            color: #07040d;
-            text-align: center;
-            padding: 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
+        .promo-badge { background: linear-gradient(90deg, #00f2fe, #4facfe); color: #07040d; text-align: center; padding: 10px; border-radius: 12px; font-weight: bold; margin-bottom: 20px; font-size: 14px; }
         .step-item { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
         .step-number { background-color: #ec4899; color: white; font-weight: bold; font-size: 14px; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         .step-text h3 { margin: 0 0 5px 0; font-size: 15px; }
@@ -79,17 +58,8 @@
         .tariff-price { font-size: 18px; font-weight: bold; color: #00f2fe; text-align: right; }
         .tariff-price span { font-size: 12px; color: #94a3b8; font-weight: normal; }
 
-        .btn {
-            display: block; text-align: center; text-decoration: none; 
-            background: linear-gradient(135deg, #d946ef, #ec4899); 
-            color: #ffffff; padding: 16px 20px; font-size: 16px; font-weight: bold;
-            border-radius: 14px; box-shadow: 0 4px 20px rgba(217, 70, 239, 0.4);
-        }
-        .btn-secondary {
-            display: block; text-align: center; text-decoration: none;
-            background-color: transparent; color: #d946ef;
-            border: 2px solid #d946ef; padding: 14px 20px; font-size: 16px; font-weight: bold; border-radius: 14px;
-        }
+        .btn { display: block; text-align: center; text-decoration: none; background: linear-gradient(135deg, #d946ef, #ec4899); color: #ffffff; padding: 16px 20px; font-size: 16px; font-weight: bold; border-radius: 14px; box-shadow: 0 4px 20px rgba(217, 70, 239, 0.4); }
+        .btn-secondary { display: block; text-align: center; text-decoration: none; background-color: transparent; color: #d946ef; border: 2px solid #d946ef; padding: 14px 20px; font-size: 16px; font-weight: bold; border-radius: 14px; }
     </style>
 </head>
 <body>
@@ -97,30 +67,40 @@
     <div class="container">
         <div class="card">
             <header>
+                <!-- Неоновый логотип Медузы -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="70" height="70" style="margin: 0 auto 10px auto; display: block;">
+                    <defs>
+                        <linearGradient id="meduzaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d946ef;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 20,50 A 30,30 0 0,1 80,50 Q 80,55 50,55 Q 20,55 20,50 Z" fill="url(#meduzaGrad)" />
+                    <path d="M 30,55 Q 25,75 35,95 M 40,55 Q 45,75 40,95 M 50,55 Q 50,75 50,95 M 60,55 Q 55,75 60,95 M 70,55 Q 75,75 65,95" fill="none" stroke="url(#meduzaGrad)" stroke-width="3" stroke-linecap="round" />
+                </svg>
                 <h1>MeduzaProxy</h1>
-                <p>Надежный, стабильный и безопасный доступ к сети без ограничений.</p>
+                <p>Надежный и безопасный доступ к сети без ограничений.</p>
             </header>
             <a href="#tariffs" class="btn-secondary">Посмотреть тарифы</a>
         </div>
 
         <div class="card">
             <h2>Как подключить:</h2>
-            <div class="step-item"><div class="step-number">1</div><div class="step-text"><h3>Получите ключ</h3><p>Выберите тариф и получите ваш уникальный доступ в Telegram.</p></div></div>
+            <div class="step-item"><div class="step-number">1</div><div class="step-text"><h3>Получите ключ</h3><p>Выберите тариф и получите доступ в Telegram.</p></div></div>
             <div class="step-item"><div class="step-number">2</div><div class="step-text"><h3>Скачайте приложение</h3><p>Установите Hiddify Next или Outline (iOS/Android).</p></div></div>
-            <div class="step-item"><div class="step-number">3</div><div class="step-text"><h3>Подключитесь</h3><p>Вставьте ключ в приложение и пользуйтесь.</p></div></div>
+            <div class="step-item"><div class="step-number">3</div><div class="step-text"><h3>Подключитесь</h3><p>Вставьте ключ и пользуйтесь.</p></div></div>
         </div>
 
         <div class="card" id="tariffs">
-            <!-- Плашка про бесплатную неделю -->
             <div class="promo-badge">🎁 Первую неделю дарим бесплатно!</div>
-            
             <h2>Выберите тариф:</h2>
             <div class="tariffs">
-                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>После пробной недели</p></div><div class="tariff-price">150 ₽<br><span>за неделю</span></div></div>
-                <div class="tariff-item"><div><h3>Стандарт</h3><p>Оптимальный доступ</p></div><div class="tariff-price">390 ₽<br><span>за месяц</span></div></div>
-                <div class="tariff-item"><div><h3>Максимум</h3><p>Выгодный безлимит</p></div><div class="tariff-price">990 ₽<br><span>за 3 месяца</span></div></div>
+                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>7 дней</p></div><div class="tariff-price">150 ₽</div></div>
+                <div class="tariff-item"><div><h3>Стандарт</h3><p>1 месяц</p></div><div class="tariff-price">390 ₽</div></div>
+                <div class="tariff-item"><div><h3>Максимум</h3><p>3 месяца</p></div><div class="tariff-price">990 ₽</div></div>
             </div>
-            <a href="https://t.me/percovna" class="btn" target="_blank">Скачать MeduzaProxy</a>
+            <a href="https://t.me/percovna" class="btn" target="_blank">
+скачать</a>
         </div>
     </div>
 </body>
