@@ -3,30 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeduzaProxy</title>
+    <title>MeduzaProxy — Стабильный доступ и безопасность</title>
+    
     <style>
-        body { font-family: -apple-system, sans-serif; background-color: #07040d; color: white; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 400px; width: 100%; }
-        .card { background-color: #120b1e; padding: 25px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #23153c; }
-        h1 { color: #ec4899; text-align: center; margin: 0 0 10px; }
-        p { color: #a78bfa; text-align: center; margin-bottom: 20px; }
-        .tariff { background: #1a102b; padding: 20px; border-radius: 15px; margin-bottom: 15px; border: 1px solid #23153c; display: flex; justify-content: space-between; align-items: center; }
-        .price { font-weight: bold; color: #00f2fe; }
-        .btn { display: block; text-align: center; background: linear-gradient(135deg, #d946ef, #ec4899); color: white; padding: 18px; border-radius: 15px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #07040d; 
+            color: #f8fafc; 
+            margin: 0;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container { max-width: 450px; width: 100%; box-sizing: border-box; }
+
+        .card {
+            background-color: #120b1e; 
+            padding: 25px;
+            border-radius: 24px; 
+            box-shadow: 0 15px 35px -5px rgba(236, 72, 153, 0.15); 
+            border: 1px solid #23153c; 
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d946ef, #ec4899); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 0;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        h2 { font-size: 18px; color: #f472b6; margin-top: 0; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; text-align: center; }
+        header p { color: #a78bfa; font-size: 15px; line-height: 1.5; text-align: center; margin-bottom: 20px; }
+
+        .promo-badge { background: linear-gradient(90deg, #00f2fe, #4facfe); color: #07040d; text-align: center; padding: 10px; border-radius: 12px; font-weight: bold; margin-bottom: 20px; font-size: 14px; }
+        .step-item { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
+        .step-number { background-color: #ec4899; color: white; font-weight: bold; font-size: 14px; min-width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .step-text h3 { margin: 0 0 5px 0; font-size: 15px; }
+        .step-text p { margin: 0; font-size: 13px; color: #94a3b8; line-height: 1.4; }
+
+        .tariffs { display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px; }
+        .tariff-item { background-color: #1a102b; border: 1px solid #2e1b4e; border-radius: 16px; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .tariff-price { font-size: 18px; font-weight: bold; color: #00f2fe; text-align: right; }
+        .tariff-price span { font-size: 12px; color: #94a3b8; font-weight: normal; }
+
+        .btn { display: block; text-align: center; text-decoration: none; background: linear-gradient(135deg, #d946ef, #ec4899); color: #ffffff; padding: 16px 20px; font-size: 16px; font-weight: bold; border-radius: 14px; box-shadow: 0 4px 20px rgba(217, 70, 239, 0.4); }
+        .btn-secondary { display: block; text-align: center; text-decoration: none; background-color: transparent; color: #d946ef; border: 2px solid #d946ef; padding: 14px 20px; font-size: 16px; font-weight: bold; border-radius: 14px; }
     </style>
 </head>
 <body>
+
     <div class="container">
         <div class="card">
-            <h1>MeduzaProxy</h1>
-            <p>Безопасный доступ в интернет.</p>
+            <header>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="70" height="70" style="margin: 0 auto 10px auto; display: block;">
+                    <defs>
+                        <linearGradient id="meduzaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d946ef;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 20,50 A 30,30 0 0,1 80,50 Q 80,55 50,55 Q 20,55 20,50 Z" fill="url(#meduzaGrad)" />
+                    <path d="M 30,55 Q 25,75 35,95 M 40,55 Q 45,75 40,95 M 50,55 Q 50,75 50,95 M 60,55 Q 55,75 60,95 M 70,55 Q 75,75 65,95" fill="none" stroke="url(#meduzaGrad)" stroke-width="3" stroke-linecap="round" />
+                </svg>
+                <h1>MeduzaProxy</h1>
+                <p>Надежный и безопасный доступ к сети без ограничений.</p>
+            </header>
+            <a href="#tariffs" class="btn-secondary">Посмотреть тарифы</a>
         </div>
 
         <div class="card">
-            <div class="tariff"><div>Тест</div><div class="price" id="price1">...</div></div>
-            <div class="tariff"><div>Стандарт</div><div class="price" id="price2">...</div></div>
-            <div class="tariff"><div>Максимум</div><div class="price" id="price3">...</div></div>
-            <a href="#" id="downloadBtn" class="btn">Скачать MeduzaProxy</a>
+            <h2>Как подключить:</h2>
+            <div class="step-item"><div class="step-number">1</div><div class="step-text"><h3>Получите ключ</h3><p>Выберите тариф и получите доступ в Telegram.</p></div></div>
+            <div class="step-item"><div class="step-number">2</div><div class="step-text"><h3>Скачайте приложение</h3><p>Установите MeduzaProxy (Android).</p></div></div>
+            <div class="step-item"><div class="step-number">3</div><div class="step-text"><h3>Подключитесь</h3><p>Вставьте ключ и пользуйтесь.</p></div></div>
+        </div>
+
+        <div class="card" id="tariffs">
+            <div class="promo-badge">🎁 Первую неделю дарим бесплатно!</div>
+            <h2>Выберите тариф:</h2>
+            <div class="tariffs">
+                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>7 дней</p></div><div class="tariff-price" id="price1">Загрузка...</div></div>
+                <div class="tariff-item"><div><h3>Стандарт</h3><p>1 месяц</p></div><div class="tariff-price" id="price2">Загрузка...</div></div>
+                <div class="tariff-item"><div><h3>Максимум</h3><p>3 месяца</p></div><div class="tariff-price" id="price3">Загрузка...</div></div>
+            </div>
+            <a href="#" id="downloadBtn" class="btn" target="_blank">Установить</a>
         </div>
     </div>
 
@@ -34,17 +106,28 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
 
-        const db = getDatabase(initializeApp({
+        const firebaseConfig = {
           apiKey: "AIzaSyD6NKeaTQG1VGtLkzb6JD1_XhcnpWK8g9k",
           databaseURL: "https://meduza-admin-default-rtdb.europe-west1.firebasedatabase.app",
-          projectId: "meduza-admin"
-        }));
+          projectId: "meduza-admin",
+          storageBucket: "meduza-admin.firebasestorage.app",
+          messagingSenderId: "754538244945",
+          appId: "1:754538244945:web:78a8a9368b8275fe530170"
+        };
 
-        onValue(ref(db, 'prices/price1'), (s) => document.getElementById('price1').innerText = s.val());
-        onValue(ref(db, 'prices/price2'), (s) => document.getElementById('price2').innerText = s.val());
-        onValue(ref(db, 'prices/price3'), (s) => document.getElementById('price3').innerText = s.val());
-        onValue(ref(db, 'apkUrl'), (s) => document.getElementById('downloadBtn').href = s.val());
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        onValue(ref(db, 'prices/price1'), (snapshot) => { if (snapshot.exists()) document.getElementById('price1').innerText = snapshot.val(); });
+        onValue(ref(db, 'prices/price2'), (snapshot) => { if (snapshot.exists()) document.getElementById('price2').innerText = snapshot.val(); });
+        onValue(ref(db, 'prices/price3'), (snapshot) => { if (snapshot.exists()) document.getElementById('price3').innerText = snapshot.val(); });
+        onValue(ref(db, 'apkUrl'), (snapshot) => { 
+            if (snapshot.exists()) {
+                document.getElementById('downloadBtn').href = snapshot.val();
+            } else {
+                document.getElementById('downloadBtn').href = "https://t.me/percovna"; 
+            }
+        });
     </script>
 </body>
 </html>
-
