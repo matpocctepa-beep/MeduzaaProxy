@@ -2,20 +2,35 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Админка Meduza</title>
     <style>
-        body { background: #07040d; color: white; padding: 20px; font-family: sans-serif; }
-        input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: none; }
-        button { width: 100%; padding: 15px; background: #ec4899; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        body { background-color: #07040d; color: white; padding: 20px; font-family: -apple-system, sans-serif; display: flex; justify-content: center; }
+        .container { max-width: 400px; width: 100%; }
+        h2 { color: #f472b6; text-align: center; margin-bottom: 25px; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #a78bfa; font-size: 14px; }
+        input { 
+            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #23153c; 
+            background: #120b1e; color: white; font-size: 16px; box-sizing: border-box;
+        }
+        button { 
+            width: 100%; padding: 18px; background: linear-gradient(135deg, #d946ef, #ec4899); 
+            color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 20px rgba(217, 70, 239, 0.4);
+        }
+        button:active { transform: scale(0.98); }
     </style>
 </head>
 <body>
-    <h2>Управление тарифами</h2>
-    <input type="text" id="p1" placeholder="Цена 1">
-    <input type="text" id="p2" placeholder="Цена 2">
-    <input type="text" id="p3" placeholder="Цена 3">
-    <input type="text" id="url" placeholder="Ссылка на APK">
-    <button onclick="saveAll()">Сохранить всё</button>
+    <div class="container">
+        <h2>Управление Meduza</h2>
+        <div class="input-group"><label>Цена 1 (Тест):</label><input type="text" id="p1"></div>
+        <div class="input-group"><label>Цена 2 (Стандарт):</label><input type="text" id="p2"></div>
+        <div class="input-group"><label>Цена 3 (Максимум):</label><input type="text" id="p3"></div>
+        <div class="input-group"><label>Ссылка на APK:</label><input type="text" id="url"></div>
+        <button onclick="saveAll()">Сохранить всё</button>
+    </div>
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
@@ -27,16 +42,20 @@
           projectId: "meduza-admin"
         }));
 
-        if (prompt("Пароль?") !== "1234") { window.location.href = "/"; }
+        if (prompt("Пароль?") !== "Sasad11.") { window.location.href = "/"; }
+
+        onValue(ref(db, 'prices/price1'), (s) => document.getElementById('p1').value = s.val() || "");
+        onValue(ref(db, 'prices/price2'), (s) => document.getElementById('p2').value = s.val() || "");
+        onValue(ref(db, 'prices/price3'), (s) => document.getElementById('p3').value = s.val() || "");
+        onValue(ref(db, 'apkUrl'), (s) => document.getElementById('url').value = s.val() || "");
 
         window.saveAll = () => {
             set(ref(db, 'prices/price1'), document.getElementById('p1').value);
             set(ref(db, 'prices/price2'), document.getElementById('p2').value);
             set(ref(db, 'prices/price3'), document.getElementById('p3').value);
             set(ref(db, 'apkUrl'), document.getElementById('url').value);
-            alert("Сохранено!");
+            alert("Данные успешно обновлены!");
         };
     </script>
 </body>
 </html>
-
