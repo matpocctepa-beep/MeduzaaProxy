@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeduzaProxy — Быстрый доступ и безопасность</title>
+    <title>MeduzaProxy — Стабильный доступ и безопасность</title>
     
     <style>
         html { scroll-behavior: smooth; }
@@ -60,6 +60,23 @@
 
         .btn { display: block; text-align: center; text-decoration: none; background: linear-gradient(135deg, #d946ef, #ec4899); color: #ffffff; padding: 16px 20px; font-size: 16px; font-weight: bold; border-radius: 14px; box-shadow: 0 4px 20px rgba(217, 70, 239, 0.4); }
         .btn-secondary { display: block; text-align: center; text-decoration: none; background-color: transparent; color: #d946ef; border: 2px solid #d946ef; padding: 14px 20px; font-size: 16px; font-weight: bold; border-radius: 14px; }
+
+        /* Стиль для кнопки админки */
+        .admin-button {
+            margin-top: 30px; /* Отступ сверху */
+            background: none; /* Прозрачный фон */
+            border: 1px solid #333; /* Серая рамка */
+            color: #555; /* Серый текст */
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer; /* Показывает, что это кнопка */
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .admin-button:active {
+            color: #888;
+            border-color: #888;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +104,7 @@
         <div class="card">
             <h2>Как подключить:</h2>
             <div class="step-item"><div class="step-number">1</div><div class="step-text"><h3>Получите ключ</h3><p>Выберите тариф и получите доступ в Telegram.</p></div></div>
-            <div class="step-item"><div class="step-number">2</div><div class="step-text"><h3>Скачайте приложение</h3><p>Установите MeduzaProxy (Android).</p></div></div>
+            <div class="step-item"><div class="step-number">2</div><div class="step-text"><h3>Скачайте приложение</h3><p>Установите Hiddify Next или Outline (iOS/Android).</p></div></div>
             <div class="step-item"><div class="step-number">3</div><div class="step-text"><h3>Подключитесь</h3><p>Вставьте ключ и пользуйтесь.</p></div></div>
         </div>
 
@@ -95,13 +112,36 @@
             <div class="promo-badge">🎁 Первую неделю дарим бесплатно!</div>
             <h2>Выберите тариф:</h2>
             <div class="tariffs">
-                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>7 дней</p></div><div class="tariff-price">150 ₽</div></div>
-                <div class="tariff-item"><div><h3>Стандарт</h3><p>1 месяц</p></div><div class="tariff-price">390 ₽</div></div>
-                <div class="tariff-item"><div><h3>Максимум</h3><p>3 месяца</p></div><div class="tariff-price">990 ₽</div></div>
+                <div class="tariff-item"><div><h3>Тест-драйв</h3><p>7 дней</p></div><div class="tariff-price" id="price1">150 ₽</div></div>
+                <div class="tariff-item"><div><h3>Стандарт</h3><p>1 месяц</p></div><div class="tariff-price" id="price2">390 ₽</div></div>
+                <div class="tariff-item"><div><h3>Максимум</h3><p>3 месяца</p></div><div class="tariff-price" id="price3">990 ₽</div></div>
             </div>
-            <a href="https://t.me/MeduzaProxy" class="btn" target="_blank">
-скачать</a>
+            <a href="https://t.me/percovna" class="btn" target="_blank">Получить доступ</a>
         </div>
     </div>
+
+    <!-- Кнопка админки и скрипт для нее -->
+    <button onclick="adminLogin()" class="admin-button">Редактировать цены</button>
+
+    <script>
+    function adminLogin() {
+        let pass = prompt("Введите пароль администратора:");
+        if (pass === "1234") { // Твой секретный пароль, который ты знаешь!
+            let newPrice1 = prompt("Новая цена для Тест-драйва:", document.getElementById('price1').innerHTML);
+            let newPrice2 = prompt("Новая цена для Стандарта:", document.getElementById('price2').innerHTML);
+            let newPrice3 = prompt("Новая цена для Максимум:", document.getElementById('price3').innerHTML);
+            
+            // Если пользователь нажмет Отмена, значение не будет меняться
+            if (newPrice1 !== null) document.getElementById('price1').innerHTML = newPrice1;
+            if (newPrice2 !== null) document.getElementById('price2').innerHTML = newPrice2;
+            if (newPrice3 !== null) document.getElementById('price3').innerHTML = newPrice3;
+            
+            alert("Цены успешно обновлены!");
+        } else if (pass !== null) { // Если не Отмена, но пароль неверный
+            alert("Неверный пароль!");
+        }
+    }
+    </script>
+
 </body>
 </html>
