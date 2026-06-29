@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Админка Meduza</title>
+    <style>
+        body { background: #07040d; color: white; padding: 20px; font-family: sans-serif; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: none; }
+        button { width: 100%; padding: 15px; background: #ec4899; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Управление тарифами</h2>
+    <input type="text" id="p1" placeholder="Цена 1">
+    <input type="text" id="p2" placeholder="Цена 2">
+    <input type="text" id="p3" placeholder="Цена 3">
+    <input type="text" id="url" placeholder="Ссылка на APK">
+    <button onclick="saveAll()">Сохранить всё</button>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js";
+
+        const db = getDatabase(initializeApp({
+          apiKey: "AIzaSyD6NKeaTQG1VGtLkzb6JD1_XhcnpWK8g9k",
+          databaseURL: "https://meduza-admin-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "meduza-admin"
+        }));
+
+        if (prompt("Пароль?") !== "1234") { window.location.href = "/"; }
+
+        window.saveAll = () => {
+            set(ref(db, 'prices/price1'), document.getElementById('p1').value);
+            set(ref(db, 'prices/price2'), document.getElementById('p2').value);
+            set(ref(db, 'prices/price3'), document.getElementById('p3').value);
+            set(ref(db, 'apkUrl'), document.getElementById('url').value);
+            alert("Сохранено!");
+        };
+    </script>
+</body>
+</html>
+
