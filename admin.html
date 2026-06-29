@@ -2,34 +2,37 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Админка Meduza</title>
+    <title>Админка MeduzaProxy</title>
     <style>
         body { background-color: #07040d; color: white; padding: 20px; font-family: -apple-system, sans-serif; display: flex; justify-content: center; }
         .container { max-width: 400px; width: 100%; }
-        h2 { color: #f472b6; text-align: center; margin-bottom: 25px; }
-        .input-group { margin-bottom: 20px; }
+        .card { background-color: #120b1e; padding: 25px; border-radius: 24px; border: 1px solid #23153c; margin-bottom: 20px; }
+        h1 { color: #f472b6; text-align: center; margin-bottom: 25px; font-size: 24px; }
+        .input-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 8px; color: #a78bfa; font-size: 14px; }
-        input { 
-            width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #23153c; 
-            background: #120b1e; color: white; font-size: 16px; box-sizing: border-box;
-        }
-        button { 
-            width: 100%; padding: 18px; background: linear-gradient(135deg, #d946ef, #ec4899); 
-            color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: bold; cursor: pointer;
-            box-shadow: 0 4px 20px rgba(217, 70, 239, 0.4);
-        }
-        button:active { transform: scale(0.98); }
+        input { width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #23153c; background: #07040d; color: white; font-size: 16px; box-sizing: border-box; }
+        button { width: 100%; padding: 18px; background: linear-gradient(135deg, #d946ef, #ec4899); color: white; border: none; border-radius: 14px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .stat-display { color: #00f2fe; font-size: 20px; font-weight: bold; margin: 10px 0; text-align: center; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Управление Meduza</h2>
-        <div class="input-group"><label>Цена 1 (Тест):</label><input type="text" id="p1"></div>
-        <div class="input-group"><label>Цена 2 (Стандарт):</label><input type="text" id="p2"></div>
-        <div class="input-group"><label>Цена 3 (Максимум):</label><input type="text" id="p3"></div>
-        <div class="input-group"><label>Ссылка на APK:</label><input type="text" id="url"></div>
-        <button onclick="saveAll()">Сохранить всё</button>
+        <div class="card">
+            <h1>MeduzaProxy Admin</h1>
+            
+            <div class="input-group"><label>Цена 1:</label><input type="text" id="p1"></div>
+            <div class="input-group"><label>Цена 2:</label><input type="text" id="p2"></div>
+            <div class="input-group"><label>Цена 3:</label><input type="text" id="p3"></div>
+            <div class="input-group"><label>Ссылка на APK:</label><input type="text" id="url"></div>
+            
+            <button onclick="saveAll()">Сохранить настройки</button>
+            
+            <div style="margin-top: 30px; border-top: 1px solid #23153c; padding-top: 20px;">
+                <label>Скачиваний (кликов):</label>
+                <div class="stat-display" id="downloads">0</div>
+                <button style="background: #e74c3c;" onclick="resetStats()">Сбросить счетчик</button>
+            </div>
+        </div>
     </div>
 
     <script type="module">
@@ -42,19 +45,26 @@
           projectId: "meduza-admin"
         }));
 
-        if (prompt("Пароль?") !== "Sasad11.") { window.location.href = "/"; }
+        if (prompt("Пароль?") !== "Sasad11") { window.location.href = "/"; }
 
-        onValue(ref(db, 'prices/price1'), (s) => document.getElementById('p1').value = s.val() || "");
-        onValue(ref(db, 'prices/price2'), (s) => document.getElementById('p2').value = s.val() || "");
-        onValue(ref(db, 'prices/price3'), (s) => document.getElementById('p3').value = s.val() || "");
-        onValue(ref(db, 'apkUrl'), (s) => document.getElementById('url').value = s.val() || "");
+        onValue(ref(db, 'meduza/prices/price1'), (s) => document.getElementById('p1').value = s.val() || "");
+        onValue(ref(db, 'meduza/prices/price2'), (s) => document.getElementById('p2').value = s.val() || "");
+        onValue(ref(db, 'meduza/prices/price3'), (s) => document.getElementById('p3').value = s.val() || "");
+        onValue(ref(db, 'meduza/apkUrl'), (s) => document.getElementById('url').value = s.val() || "");
+        onValue(ref(db, 'meduza/stats/downloads'), (s) => document.getElementById('downloads').innerText = s.val() || 0);
 
         window.saveAll = () => {
-            set(ref(db, 'prices/price1'), document.getElementById('p1').value);
-            set(ref(db, 'prices/price2'), document.getElementById('p2').value);
-            set(ref(db, 'prices/price3'), document.getElementById('p3').value);
-            set(ref(db, 'apkUrl'), document.getElementById('url').value);
-            alert("Данные успешно обновлены!");
+            set(ref(db, 'meduza/prices/price1'), document.getElementById('p1').value);
+            set(ref(db, 'meduza/prices/price2'), document.getElementById('p2').value);
+            set(ref(db, 'meduza/prices/price3'), document.getElementById('p3').value);
+            set(ref(db, 'meduza/apkUrl'), document.getElementById('url').value);
+            alert("Сохранено!");
+        };
+
+        window.resetStats = () => {
+            if (confirm("Сбросить?")) {
+                set(ref(db, 'meduza/stats/downloads'), 0);
+            }
         };
     </script>
 </body>
